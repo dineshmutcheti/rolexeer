@@ -3,11 +3,11 @@ const mysql = require('mysql2');
 const axios = require('axios');
 const app = express();
 
-// Create a connection to the MySQL database
+
 const db = mysql.createConnection({
     host: 'localhost',
-    user: 'root',       // Replace with your MySQL username
-    password: 'Dinesh@4592',       // Replace with your MySQL password
+    user: 'root',       
+    password: 'Dinesh@4592',       
     database: 'transactions_db'
 });
 
@@ -20,7 +20,7 @@ db.connect(err => {
     console.log('Connected to MySQL');
 });
 
-// Middleware to parse JSON
+
 app.use(express.json());
 
 // Fetch data from the third-party API and seed the database
@@ -56,7 +56,7 @@ app.get('/initialize', async (req, res) => {
     }
 });
 
-// API to list all transactions with search and pagination
+
 app.get('/transactions', (req, res) => {
     const { search, page = 1, perPage = 10, month } = req.query;
 
@@ -81,7 +81,7 @@ app.get('/transactions', (req, res) => {
     });
 });
 
-// API to get statistics for a given month
+
 app.get('/statistics', (req, res) => {
     const { month } = req.query;
 
